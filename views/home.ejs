@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Registration</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+
+      .form-container {
+        background: #fff;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        width: 350px;
+      }
+
+      .form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: border 0.3s;
+      }
+
+      input:focus {
+        border-color: #4facfe;
+        outline: none;
+      }
+
+      .radio-group {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-top: 5px;
+      }
+
+      .radio-group label {
+        font-weight: normal;
+        margin: 0;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 12px;
+        background: #4facfe;
+        border: none;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .btn:hover {
+        background: #00c6ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <a href="/view-users"><button>View Users</button></a>
+      <h2>Register</h2>
+      <form action="/saveform" method="POST">
+        <div class="form-group">
+          <label for="userName">Username</label>
+          <input
+            type="text"
+            id="userName"
+            name="userName"
+            placeholder="Enter your username"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="userEmail">Email</label>
+          <input
+            type="email"
+            id="userEmail"
+            name="userEmail"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="userPassword">Password</label>
+          <input
+            type="password"
+            id="userPassword"
+            name="userPassword"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="userGender">Gender</label>
+          <select id="userGender" name="userGender" required>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Are you eligible?</label>
+          <div class="radio-group">
+            <input
+              type="radio"
+              id="eligibleYes"
+              name="isEligible"
+              value="yes"
+              required
+            />
+            <label for="eligibleYes">Yes</label>
+
+            <input type="radio" id="eligibleNo" name="isEligible" value="no" />
+            <label for="eligibleNo">No</label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn">Register</button>
+      </form>
+    </div>
+  </body>
+</html>

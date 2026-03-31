@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Table</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            padding: 20px;
+        }
+
+        .table-container {
+            width: 80%;
+            margin: auto;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .badge {
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        .eligible {
+            background-color: #28a745;
+        }
+
+        .not-eligible {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <a href="/"><button>Add User</button></a>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Eligible</th>
+                <th>Gender</th>
+                <th>Action</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <%{if (data.length <=0 ){%>
+                <tr>
+                    <td colspan="8" style="text-align: center;">No data found</td>
+                </tr>
+           <% }}%>
+            <% data.map((user,index)=>{ %>
+                <tr>
+                    <td><%=user.userName%></td>
+                    <td><%=user.userEmail%></td>
+                    <td><%=user.userPassword%></td>
+                    <td> <span class="badge <%= user.isEligible == 'yes' || user.isEligible == true ? 'eligible' : 'not-eligible' %>">
+        <%= user.isEligible == 'yes' || user.isEligible == true ? 'Yes' : 'No' %> </span></td>
+                    <td><%=user.userGender%></td>
+                    <td><a onclick="return window.confirm('Are you sure?')" href="/deleteuser/<%-user._id%>"><i class="fa fa-trash" style="color: red;"></i></a></td>
+
+                    <td><a href="/edit/<%-user._id%>"><i class="fa fa-edit" style="color: rgb(14, 159, 14);"></i></a></td>
+                </tr>
+            <% }) %>
+
+            
+               
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
